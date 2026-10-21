@@ -1,8 +1,8 @@
 import confetti from 'canvas-confetti';
 
 /**
- * Trigger a gentle, elegant cosmic confetti burst
- * Customized with dreamy sky blue, ice blue, silver, and soft gold colors
+ * Trigger a gentle, elegant celebration confetti burst
+ * Customized with dreamy sky blue, pastel pink, lavender, soft peach, and gold
  */
 export const triggerCelebrationConfetti = () => {
   // Check prefers-reduced-motion
@@ -13,7 +13,15 @@ export const triggerCelebrationConfetti = () => {
   const count = 180;
   const defaults = {
     origin: { y: 0.7 },
-    colors: ['#60A5FA', '#93C5FD', '#BAE6FD', '#F8FAFC', '#FDE047', '#E0F2FE'],
+    colors: [
+      '#F9A8D4', // Pastel pink
+      '#C4B5FD', // Lavender
+      '#FDBA9B', // Soft peach
+      '#BFDBFE', // Powder blue
+      '#60A5FA', // Primary blue
+      '#FDE047', // Soft gold
+      '#FFFFFF'  // White star
+    ],
     disableForReducedMotion: true,
   };
 
@@ -59,7 +67,7 @@ export const triggerWishSparkles = () => {
   }
 
   const end = Date.now() + 1.2 * 1000;
-  const colors = ['#93C5FD', '#BAE6FD', '#FFFFFF', '#60A5FA'];
+  const colors = ['#F9A8D4', '#C4B5FD', '#FDBA9B', '#BAE6FD', '#FFFFFF'];
 
   (function frame() {
     confetti({
