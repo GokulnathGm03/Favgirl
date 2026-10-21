@@ -67,23 +67,12 @@ export default function App() {
         <SoundToggle />
       </header>
 
-      {/* Floating Vertical Navigation Sidebar (Left side, replaces bottom navbar) */}
-      <AnimatePresence>
-        {maxUnlockedStage > 1 && (
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -30 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <NavigationSidebar
-              currentStage={currentStage}
-              maxUnlockedStage={maxUnlockedStage}
-              onSelectStage={navigateToStage}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Persistent Left Floating Navigation Sidebar */}
+      <NavigationSidebar
+        currentStage={currentStage}
+        maxUnlockedStage={maxUnlockedStage}
+        onSelectStage={navigateToStage}
+      />
 
       {/* Main Stage Display Area:
           Includes subtle left padding on laptops (lg:pl-16 xl:pl-0) to maintain a generous visible gap

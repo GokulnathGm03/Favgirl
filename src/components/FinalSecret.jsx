@@ -237,12 +237,12 @@ export default function FinalSecret({ onReplay }) {
             ))}
           </div>
 
-          {/* Centered Word Reveal: "Epdithanoo… 💙" */}
+          {/* Centered Word Reveal: "Epdithanoo… 💙" (Exactly 2-second celestial pause) */}
           <motion.div
             initial={{ 
               opacity: 0, 
-              y: shouldReduceMotion ? 0 : 20, 
-              scale: shouldReduceMotion ? 1 : 0.94 
+              y: shouldReduceMotion ? 0 : 16, 
+              scale: shouldReduceMotion ? 1 : 0.95 
             }}
             animate={{ 
               opacity: 1, 
@@ -250,8 +250,8 @@ export default function FinalSecret({ onReplay }) {
               scale: 1 
             }}
             transition={{
-              delay: shouldReduceMotion ? 0 : 1.4,
-              duration: shouldReduceMotion ? 0.3 : 1.6,
+              delay: shouldReduceMotion ? 0 : 2.0,
+              duration: shouldReduceMotion ? 0.3 : 1.5,
               ease: [0.16, 1, 0.3, 1],
             }}
             className="my-auto py-12 flex flex-col items-center justify-center"
@@ -261,12 +261,12 @@ export default function FinalSecret({ onReplay }) {
             </h1>
           </motion.div>
 
-          {/* Subtle "Replay the Surprise" Option (Appears only after the word has been revealed) */}
+          {/* Subtle "Replay the Surprise" Option (Appears after the word has been revealed) */}
           <motion.div
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              delay: shouldReduceMotion ? 0.1 : 3.6,
+              delay: shouldReduceMotion ? 0.1 : 4.0,
               duration: shouldReduceMotion ? 0.3 : 1.0,
               ease: "easeOut",
             }}

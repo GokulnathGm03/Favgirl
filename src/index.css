@@ -96,21 +96,20 @@
 
 @keyframes smokeRise {
   0% {
-    opacity: 0.8;
-    transform: translateY(0) scale(0.8) rotate(0deg);
+    opacity: 0;
+    transform: translateY(0);
   }
-  50% {
-    opacity: 0.5;
-    transform: translateY(-20px) scale(1.2) rotate(10deg);
+  25% {
+    opacity: 0.8;
   }
   100% {
     opacity: 0;
-    transform: translateY(-40px) scale(1.6) rotate(-15deg);
+    transform: translateY(-24px);
   }
 }
 
 .animate-smoke {
-  animation: smokeRise 1.6s ease-out forwards;
+  animation: smokeRise 1.8s ease-out forwards;
 }
 
 @keyframes balloonFloat1 {

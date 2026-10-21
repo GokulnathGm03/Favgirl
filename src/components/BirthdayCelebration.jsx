@@ -458,11 +458,57 @@ export default function BirthdayCelebration({ onContinue }) {
                 <ellipse cx="168.5" cy="59" rx="2.2" ry="5.8" fill="#FFFFFF" opacity="0.95" />
               </g>
             ) : (
-              <g className="animate-smoke">
-                {/* Wispy smoke rising after blowing */}
-                <path d="M111.5 65 C107 57 116 50 110 40" stroke="#E2E8F0" strokeWidth="1.8" strokeLinecap="round" fill="none" opacity="0.75"/>
-                <path d="M140 52 C135 42 146 34 139 24" stroke="#E2E8F0" strokeWidth="2.4" strokeLinecap="round" fill="none" opacity="0.85"/>
-                <path d="M168.5 65 C164 57 173 50 167 40" stroke="#E2E8F0" strokeWidth="1.8" strokeLinecap="round" fill="none" opacity="0.75"/>
+              <g className="pointer-events-none select-none">
+                {/* Left Candle Smoke Wisp (Wick at 111.5, 67) */}
+                <motion.path
+                  d="M111.5 67 C109 58 113.5 48 110.5 38 C108 30 112 20 109 10"
+                  stroke="#E2E8F0"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  fill="none"
+                  initial={{ pathLength: 0, opacity: 0, y: 0, x: 0 }}
+                  animate={{
+                    pathLength: shouldReduceMotion ? 1 : [0, 0.8, 1],
+                    opacity: shouldReduceMotion ? 0 : [0, 0.75, 0.4, 0],
+                    y: shouldReduceMotion ? 0 : [0, -10, -22],
+                    x: shouldReduceMotion ? 0 : [0, -2, 1.5],
+                  }}
+                  transition={{ duration: shouldReduceMotion ? 0.2 : 1.8, ease: "easeOut" }}
+                />
+
+                {/* Center Candle Smoke Wisp (Wick at 140, 54 - centerpiece) */}
+                <motion.path
+                  d="M140 54 C137 44 142.5 34 139 24 C136.5 16 141 6 138 -4"
+                  stroke="#E2E8F0"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  fill="none"
+                  initial={{ pathLength: 0, opacity: 0, y: 0, x: 0 }}
+                  animate={{
+                    pathLength: shouldReduceMotion ? 1 : [0, 0.8, 1],
+                    opacity: shouldReduceMotion ? 0 : [0, 0.85, 0.45, 0],
+                    y: shouldReduceMotion ? 0 : [0, -12, -26],
+                    x: shouldReduceMotion ? 0 : [0, 2, -1.8],
+                  }}
+                  transition={{ duration: shouldReduceMotion ? 0.2 : 2.0, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.05 }}
+                />
+
+                {/* Right Candle Smoke Wisp (Wick at 168.5, 67) */}
+                <motion.path
+                  d="M168.5 67 C166 58 170.5 48 167.5 38 C165 30 169 20 166 10"
+                  stroke="#E2E8F0"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  fill="none"
+                  initial={{ pathLength: 0, opacity: 0, y: 0, x: 0 }}
+                  animate={{
+                    pathLength: shouldReduceMotion ? 1 : [0, 0.8, 1],
+                    opacity: shouldReduceMotion ? 0 : [0, 0.75, 0.4, 0],
+                    y: shouldReduceMotion ? 0 : [0, -10, -22],
+                    x: shouldReduceMotion ? 0 : [0, 1.8, -1.2],
+                  }}
+                  transition={{ duration: shouldReduceMotion ? 0.2 : 1.8, ease: "easeOut", delay: shouldReduceMotion ? 0 : 0.1 }}
+                />
               </g>
             )}
 
