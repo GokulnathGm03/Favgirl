@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Maximize2, Heart } from 'lucide-react';
+import { Sparkles, Maximize2 } from 'lucide-react';
 import { soloMemories } from '../data/galleryData';
 import ImageWithFallback from './ImageWithFallback';
 import PhotoLightbox from './PhotoLightbox';
@@ -38,43 +38,47 @@ export default function PhotoGallery() {
             {/* Card Shell */}
             <div 
               onClick={() => setSelectedPhoto(photo)}
-              className="glass-card glass-card-hover p-4 sm:p-5 rounded-3xl cursor-pointer border border-skyBlue/20 relative overflow-hidden transition-all duration-300"
+              className="glass-card glass-card-hover p-4 sm:p-5 rounded-3xl cursor-pointer border border-skyBlue/20 relative overflow-hidden transition-all duration-300 h-full flex flex-col justify-between"
             >
               {/* Image Frame */}
-              <div className="relative overflow-hidden rounded-2xl mb-4">
+              <div className="relative overflow-hidden rounded-2xl mb-4 flex-grow">
                 <ImageWithFallback
                   src={photo.src}
+                  fallbackSrc={photo.fallbackSrc}
                   alt={photo.alt}
                   placeholderTitle={photo.title}
                   expectedPath={photo.src}
-                  aspectRatio="aspect-[4/5]"
+                  aspectRatio="aspect-[3/4] sm:aspect-[4/5]"
+                  objectPosition={photo.objectPosition || "object-center"}
                 />
 
                 {/* Subtle Hover Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-deepNavy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-between p-4">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-softWhite bg-black/50 backdrop-blur-sm border border-white/20">
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium text-softWhite bg-black/60 backdrop-blur-sm border border-white/20 shadow-sm">
                     <Maximize2 className="w-3.5 h-3.5 text-iceBlue" />
-                    Expand Photo
+                    Tap to expand
                   </span>
                 </div>
               </div>
 
               {/* Card Meta */}
-              <div className="flex items-center justify-between text-xs mb-1">
-                <span className="font-mono text-primaryBlue font-semibold uppercase tracking-wider">
-                  {photo.tag}
-                </span>
-                <span className="text-skyBlue/60 text-[11px]">
-                  Moment {index + 1} of {soloMemories.length}
-                </span>
-              </div>
+              <div>
+                <div className="flex items-center justify-between text-xs mb-1">
+                  <span className="font-mono text-primaryBlue font-semibold uppercase tracking-wider">
+                    {photo.tag}
+                  </span>
+                  <span className="text-skyBlue/60 text-[11px]">
+                    Moment {index + 1} of {soloMemories.length}
+                  </span>
+                </div>
 
-              <h4 className="font-serif text-lg sm:text-xl font-bold text-softWhite group-hover:text-iceBlue transition-colors duration-200">
-                {photo.title}
-              </h4>
-              <p className="text-xs sm:text-sm text-skyBlue/80 font-light mt-0.5">
-                {photo.subtitle}
-              </p>
+                <h4 className="font-serif text-lg sm:text-xl font-bold text-softWhite group-hover:text-iceBlue transition-colors duration-200">
+                  {photo.title}
+                </h4>
+                <p className="text-xs sm:text-sm text-skyBlue/80 font-light mt-0.5">
+                  {photo.subtitle}
+                </p>
+              </div>
             </div>
           </motion.div>
         ))}

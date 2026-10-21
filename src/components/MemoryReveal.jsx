@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sparkles, Lock, Unlock, Maximize2, Heart } from 'lucide-react';
-import { weddingMemory } from '../data/galleryData';
+import { Sparkles, Lock, Maximize2, Heart, Camera } from 'lucide-react';
+import { weddingMemory, selfieMemory } from '../data/galleryData';
 import ImageWithFallback from './ImageWithFallback';
 import PhotoLightbox from './PhotoLightbox';
 
 export default function MemoryReveal() {
   const [isRevealed, setIsRevealed] = useState(false);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [activeMemory, setActiveMemory] = useState('wedding'); // 'wedding' | 'selfie'
+  const [lightboxPhoto, setLightboxPhoto] = useState(null);
+
+  const currentPhoto = activeMemory === 'wedding' ? weddingMemory : selfieMemory;
 
   return (
     <div className="w-full mt-20">
@@ -18,17 +21,17 @@ export default function MemoryReveal() {
           An Unexpected Memory
         </span>
         <h3 className="font-serif text-2xl sm:text-4xl font-bold text-softWhite mb-2">
-          A Moment at the Wedding
+          Moments Together
         </h3>
         <p className="text-skyBlue/80 text-xs sm:text-sm max-w-md mx-auto font-light">
-          A memory that happened effortlessly, just like the rest of our story.
+          Memories that happened effortlessly, just like the rest of our story.
         </p>
       </div>
 
-      <div className="max-w-xl mx-auto">
+      <div className="max-w-2xl mx-auto">
         <AnimatePresence mode="wait">
           {!isRevealed ? (
-            /* Pre-Reveal Card */
+            /* Pre-Reveal Locked Card */
             <motion.div
               key="pre-reveal"
               initial={{ opacity: 0, scale: 0.95 }}
@@ -65,19 +68,53 @@ export default function MemoryReveal() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="glass-card p-5 sm:p-7 rounded-3xl border border-skyBlue/35 shadow-glow-lg text-center"
+              className="glass-card p-5 sm:p-8 rounded-3xl border border-skyBlue/35 shadow-glow-lg text-center"
             >
+              {/* Memory Switcher Tabs (if selfie is available) */}
+              <div className="flex items-center justify-center gap-2 mb-6">
+                <button
+                  onClick={() => setActiveMemory('wedding')}
+                  className={`px-4 py-2 rounded-full text-xs sm:text-sm transition-all duration-300 ${
+                    activeMemory === 'wedding'
+                      ? 'bg-primaryBlue/30 text-softWhite border border-skyBlue/50 shadow-glow-sm font-medium'
+                      : 'text-skyBlue/70 hover:text-softWhite bg-white/5 border border-transparent'
+                  }`}
+                >
+                  At The Wedding 📸
+                </button>
+                <button
+                  onClick={() => setActiveMemory('selfie')}
+                  className={`px-4 py-2 rounded-full text-xs sm:text-sm transition-all duration-300 ${
+                    activeMemory === 'selfie'
+                      ? 'bg-primaryBlue/30 text-softWhite border border-skyBlue/50 shadow-glow-sm font-medium'
+                      : 'text-skyBlue/70 hover:text-softWhite bg-white/5 border border-transparent'
+                  }`}
+                >
+                  A Candid Selfie 💙
+                </button>
+              </div>
+
               {/* Framed Picture Container */}
               <div 
-                onClick={() => setLightboxOpen(true)}
+                onClick={() => setLightboxPhoto({
+                  src: currentPhoto.src,
+                  fallbackSrc: currentPhoto.fallbackSrc,
+                  alt: currentPhoto.alt,
+                  title: currentPhoto.title,
+                  subtitle: currentPhoto.subtitle,
+                  tag: currentPhoto.tag,
+                  note: currentPhoto.caption
+                })}
                 className="group relative cursor-pointer overflow-hidden rounded-2xl mb-6 border-2 border-skyBlue/30 shadow-inner"
               >
                 <ImageWithFallback
-                  src={weddingMemory.src}
-                  alt={weddingMemory.alt}
-                  placeholderTitle="Wedding Photograph Placeholder"
-                  expectedPath={weddingMemory.src}
+                  src={currentPhoto.src}
+                  fallbackSrc={currentPhoto.fallbackSrc}
+                  alt={currentPhoto.alt}
+                  placeholderTitle={currentPhoto.title}
+                  expectedPath={currentPhoto.src}
                   aspectRatio="aspect-[4/3] sm:aspect-[16/10]"
+                  objectPosition="object-center"
                 />
 
                 <div className="absolute inset-0 bg-gradient-to-t from-deepNavy/85 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center p-4">
@@ -88,13 +125,13 @@ export default function MemoryReveal() {
                 </div>
               </div>
 
-              {/* Exact Caption from requirements */}
+              {/* Caption */}
               <div className="p-4 rounded-2xl bg-midnightBlue/60 border border-skyBlue/15">
                 <p className="font-serif italic text-base sm:text-lg text-softWhite leading-relaxed mb-2">
-                  "{weddingMemory.caption}"
+                  "{currentPhoto.caption}"
                 </p>
                 <span className="text-[11px] uppercase tracking-wider font-mono text-skyBlue/60">
-                  Unplanned Moments • The Best Kind
+                  {currentPhoto.title} • Preserved With Care
                 </span>
               </div>
             </motion.div>
@@ -102,18 +139,11 @@ export default function MemoryReveal() {
         </AnimatePresence>
       </div>
 
-      {/* Lightbox for Wedding Memory */}
-      {lightboxOpen && (
+      {/* Lightbox for Memory Photos */}
+      {lightboxPhoto && (
         <PhotoLightbox
-          photo={{
-            src: weddingMemory.src,
-            alt: weddingMemory.alt,
-            title: "Our Wedding Memory",
-            subtitle: "Unplanned and worth keeping",
-            tag: "Together",
-            note: weddingMemory.caption
-          }}
-          onClose={() => setLightboxOpen(false)}
+          photo={lightboxPhoto}
+          onClose={() => setLightboxPhoto(null)}
         />
       )}
     </div>

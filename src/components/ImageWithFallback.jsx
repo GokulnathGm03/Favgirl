@@ -1,31 +1,42 @@
 import React, { useState } from 'react';
-import { Camera, Sparkles, AlertCircle } from 'lucide-react';
+import { Camera, Sparkles } from 'lucide-react';
 
 export default function ImageWithFallback({ 
   src, 
+  fallbackSrc,
   alt, 
   className = "", 
   placeholderTitle = "Photograph Placeholder", 
   expectedPath = "/images/sowmi-01.jpg",
-  aspectRatio = "aspect-[3/4]"
+  aspectRatio = "aspect-[3/4]",
+  objectPosition = "object-center"
 }) {
+  const [currentSrc, setCurrentSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [triedFallback, setTriedFallback] = useState(false);
+
+  const handleError = () => {
+    if (fallbackSrc && !triedFallback && currentSrc !== fallbackSrc) {
+      setTriedFallback(true);
+      setCurrentSrc(fallbackSrc);
+    } else {
+      setHasError(true);
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className={`relative overflow-hidden ${aspectRatio} w-full rounded-2xl bg-deepNavy/80 border border-skyBlue/20 ${className}`}>
       {!hasError ? (
         <>
           <img
-            src={src}
+            src={currentSrc}
             alt={alt}
             loading="lazy"
             onLoad={() => setIsLoading(false)}
-            onError={() => {
-              setHasError(true);
-              setIsLoading(false);
-            }}
-            className={`w-full h-full object-cover transition-all duration-700 ${
+            onError={handleError}
+            className={`w-full h-full object-cover ${objectPosition} transition-all duration-700 ${
               isLoading ? 'opacity-0 scale-95 blur-sm' : 'opacity-100 scale-100 blur-0'
             }`}
           />

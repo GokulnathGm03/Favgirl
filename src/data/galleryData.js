@@ -1,38 +1,42 @@
 /**
  * Gallery Data for Sowmi's Birthday Website
  * 
- * You can easily add, remove, or edit photographs here.
- * Place your real images in the /public/images/ folder with the matching filenames.
- * If a photo hasn't been added yet, the website will display an elegant celestial placeholder!
+ * Configured with authentic memories of Sowmiya.
  */
 
 export const soloMemories = [
   {
     id: 1,
-    title: "Her Radiance",
-    subtitle: "A smile that lights up any room",
+    title: "A Tender Smile",
+    subtitle: "Gentle warmth and genuine kindness",
     src: "/images/sowmi-01.jpg",
-    alt: "Sowmiya's photograph 1",
-    tag: "Radiance",
-    note: "Some smiles carry a warmth that stays with you long after the conversation ends."
+    fallbackSrc: "/images/sowmi-01.jpg.jpeg",
+    alt: "Sowmi smiling warmly",
+    tag: "Warmth",
+    objectPosition: "object-top",
+    note: "Some smiles carry a natural warmth that makes everyone around feel at ease."
   },
   {
     id: 2,
-    title: "Grace & Calm",
-    subtitle: "Poise in the simplest of moments",
+    title: "Grace in Blue",
+    subtitle: "Timeless elegance in a saree",
     src: "/images/sowmi-02.jpg",
-    alt: "Sowmiya's photograph 2",
-    tag: "Grace",
-    note: "Quiet elegance, effortless charm, and that natural ease she carries everywhere."
+    fallbackSrc: "/images/sowmi-02.jpg.jpeg",
+    alt: "Sowmi in an elegant blue saree",
+    tag: "Elegance",
+    objectPosition: "object-top",
+    note: "Effortless poise and that quiet elegance you carry so naturally."
   },
   {
     id: 3,
-    title: "Pure Joy",
-    subtitle: "Unfiltered laughter and candid happiness",
+    title: "Playful & Candid",
+    subtitle: "Joyful moments and lighthearted laughter",
     src: "/images/sowmi-03.jpg",
-    alt: "Sowmiya's photograph 3",
+    fallbackSrc: "/images/sowmi-03.jpg.jpeg",
+    alt: "Candid playful portrait of Sowmi",
     tag: "Joy",
-    note: "Moments where happiness looks completely effortless on you."
+    objectPosition: "object-top",
+    note: "The sweetest moments are the candid ones where you're simply being yourself."
   }
 ];
 
@@ -41,9 +45,21 @@ export const weddingMemory = {
   title: "An Unexpected Memory",
   subtitle: "At a wedding, completely unplanned",
   src: "/images/our-memory.jpg",
+  fallbackSrc: "/images/our-memory.jpg.jpeg",
   alt: "Sowmi and me together at a wedding",
-  tag: "Special Moment",
+  tag: "Wedding Memory",
   preRevealText: "Some memories happen without a plan...",
   buttonText: "Reveal This Memory ✨",
   caption: "We never planned to take a picture together that day. Somehow, we still ended up with a memory worth keeping. 💙"
+};
+
+export const selfieMemory = {
+  id: "selfie-memory",
+  title: "Our Candid Selfie",
+  subtitle: "A spontaneous moment together",
+  src: "/images/our-selfie.jpg",
+  fallbackSrc: "/images/our-selfie.jpg.jpeg",
+  alt: "A smiling selfie of Sowmi and me together",
+  tag: "Special Moment",
+  caption: "Some of the best smiles happen when you're simply sharing a moment with someone you value. 💙"
 };
