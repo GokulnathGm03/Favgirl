@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import StarryBackground from './components/StarryBackground';
 import SoundToggle from './components/SoundToggle';
 import ProgressIndicator from './components/ProgressIndicator';
@@ -23,6 +23,10 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleOpenSurprise = () => {
+    navigateToStage(2);
+  };
+
   const handleReplay = () => {
     setCurrentStage(1);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -42,15 +46,15 @@ export default function App() {
   }, [currentStage, maxUnlockedStage]);
 
   return (
-    <div className="relative min-h-screen bg-[#071426] text-[#F8FAFC] overflow-x-hidden flex flex-col justify-between selection:bg-primaryBlue/30 selection:text-white">
+    <div className="relative min-h-[100dvh] bg-[#071426] text-[#F8FAFC] overflow-x-hidden flex flex-col justify-between selection:bg-primaryBlue/30 selection:text-white">
       {/* Fixed Ambient Cosmos Background */}
       <StarryBackground />
 
       {/* Top Bar Header & Controls */}
-      <header className="relative z-40 w-full px-4 sm:px-8 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-2.5 h-2.5 rounded-full bg-primaryBlue animate-pulse shadow-glow-sm" />
-          <span className="font-serif tracking-wide text-xs sm:text-sm text-softWhite/80">
+      <header className="relative z-40 w-full px-4 sm:px-8 py-3.5 sm:py-4 flex items-center justify-between gap-3 max-w-full">
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="w-2.5 h-2.5 rounded-full bg-primaryBlue animate-pulse shadow-glow-sm flex-shrink-0" />
+          <span className="font-serif tracking-wide text-xs sm:text-sm text-softWhite/85 truncate">
             A Little Universe Called Sowmi <span className="text-primaryBlue">💙</span>
           </span>
         </div>
@@ -60,12 +64,12 @@ export default function App() {
       </header>
 
       {/* Main Stage Display Area */}
-      <main className="relative z-10 flex-grow flex items-center justify-center w-full pb-20">
+      <main className="relative z-10 flex-grow flex items-center justify-center w-full px-0 pb-16 sm:pb-20">
         <AnimatePresence mode="wait">
           {currentStage === 1 && (
             <OpeningScreen
               key="stage-1"
-              onOpenSurprise={() => navigateToStage(2)}
+              onOpenSurprise={handleOpenSurprise}
             />
           )}
 
@@ -106,12 +110,24 @@ export default function App() {
         </AnimatePresence>
       </main>
 
-      {/* Bottom Floating Navigation Tracker */}
-      <ProgressIndicator
-        currentStage={currentStage}
-        maxUnlockedStage={maxUnlockedStage}
-        onSelectStage={navigateToStage}
-      />
+      {/* Bottom Floating Navigation Tracker:
+          Cleanly hidden on the opening screen until the surprise is opened */}
+      <AnimatePresence>
+        {maxUnlockedStage > 1 && (
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 25 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <ProgressIndicator
+              currentStage={currentStage}
+              maxUnlockedStage={maxUnlockedStage}
+              onSelectStage={navigateToStage}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
