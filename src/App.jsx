@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import StarryBackground from './components/StarryBackground';
 import SoundToggle from './components/SoundToggle';
-import ProgressIndicator from './components/ProgressIndicator';
+import NavigationSidebar from './components/NavigationSidebar';
 import OpeningScreen from './components/OpeningScreen';
 import BirthdayCelebration from './components/BirthdayCelebration';
 import StoryTimeline from './components/StoryTimeline';
@@ -63,8 +63,28 @@ export default function App() {
         <SoundToggle />
       </header>
 
-      {/* Main Stage Display Area */}
-      <main className="relative z-10 flex-grow flex items-center justify-center w-full px-0 pb-16 sm:pb-20">
+      {/* Floating Vertical Navigation Sidebar (Left side, replaces bottom navbar) */}
+      <AnimatePresence>
+        {maxUnlockedStage > 1 && (
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -30 }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <NavigationSidebar
+              currentStage={currentStage}
+              maxUnlockedStage={maxUnlockedStage}
+              onSelectStage={navigateToStage}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Main Stage Display Area:
+          Includes subtle left padding on laptops (lg:pl-16 xl:pl-0) to maintain a generous visible gap
+          between the left sidebar and central cards without shifting mobile layout */}
+      <main className="relative z-10 flex-grow flex items-center justify-center w-full px-4 sm:px-6 lg:pl-16 xl:pl-0 pb-16 sm:pb-20">
         <AnimatePresence mode="wait">
           {currentStage === 1 && (
             <OpeningScreen
@@ -109,25 +129,6 @@ export default function App() {
           )}
         </AnimatePresence>
       </main>
-
-      {/* Bottom Floating Navigation Tracker:
-          Cleanly hidden on the opening screen until the surprise is opened */}
-      <AnimatePresence>
-        {maxUnlockedStage > 1 && (
-          <motion.div
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 25 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <ProgressIndicator
-              currentStage={currentStage}
-              maxUnlockedStage={maxUnlockedStage}
-              onSelectStage={navigateToStage}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </div>
   );
 }

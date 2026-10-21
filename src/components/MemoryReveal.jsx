@@ -52,7 +52,7 @@ export default function MemoryReveal() {
 
               <button
                 onClick={() => setIsRevealed(true)}
-                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-base font-medium text-midnightBlue bg-gradient-to-r from-iceBlue via-skyBlue to-primaryBlue shadow-candle hover:scale-105 active:scale-95 transition-all duration-300 font-sans cursor-pointer"
+                className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-base font-medium text-midnightBlue bg-gradient-to-r from-iceBlue via-skyBlue to-primaryBlue shadow-candle hover:scale-105 active:scale-95 transition-all duration-300 font-sans cursor-pointer focus:outline-none focus:ring-2 focus:ring-skyBlue"
               >
                 <Sparkles className="w-4 h-4 text-midnightBlue" />
                 {weddingMemory.buttonText}
@@ -70,7 +70,16 @@ export default function MemoryReveal() {
               {/* Framed Picture Container */}
               <div 
                 onClick={() => setLightboxOpen(true)}
-                className="group relative cursor-pointer overflow-hidden rounded-2xl mb-6 border-2 border-skyBlue/30 shadow-inner"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setLightboxOpen(true);
+                  }
+                }}
+                tabIndex={0}
+                role="button"
+                aria-label="View full wedding photo"
+                className="group relative cursor-pointer overflow-hidden rounded-2xl mb-6 border-2 border-skyBlue/30 shadow-inner focus:outline-none focus:ring-2 focus:ring-skyBlue"
               >
                 <ImageWithFallback
                   src={weddingMemory.src}

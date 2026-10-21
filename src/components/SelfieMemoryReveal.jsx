@@ -53,7 +53,7 @@ export default function SelfieMemoryReveal() {
               {/* Required Button: "Reveal This Memory" */}
               <button
                 onClick={() => setIsRevealed(true)}
-                className="group relative inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full text-base font-medium text-midnightBlue bg-gradient-to-r from-iceBlue via-skyBlue to-primaryBlue shadow-candle hover:scale-105 active:scale-95 transition-all duration-300 font-sans cursor-pointer"
+                className="group relative inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-full text-base font-medium text-midnightBlue bg-gradient-to-r from-iceBlue via-skyBlue to-primaryBlue shadow-candle hover:scale-105 active:scale-95 transition-all duration-300 font-sans cursor-pointer focus:outline-none focus:ring-2 focus:ring-skyBlue"
                 aria-label="Reveal this selfie memory"
               >
                 <Sparkles className="w-4 h-4 text-midnightBlue group-hover:rotate-12 transition-transform duration-300" />
@@ -72,7 +72,16 @@ export default function SelfieMemoryReveal() {
               {/* Framed Picture Container */}
               <div 
                 onClick={() => setLightboxOpen(true)}
-                className="group relative cursor-pointer overflow-hidden rounded-2xl mb-6 border-2 border-iceBlue/35 shadow-inner"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setLightboxOpen(true);
+                  }
+                }}
+                tabIndex={0}
+                role="button"
+                aria-label="View full selfie photo"
+                className="group relative cursor-pointer overflow-hidden rounded-2xl mb-6 border-2 border-iceBlue/35 shadow-inner focus:outline-none focus:ring-2 focus:ring-skyBlue"
               >
                 <ImageWithFallback
                   src={selfieMemory.src}

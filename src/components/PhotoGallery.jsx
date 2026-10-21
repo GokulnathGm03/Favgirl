@@ -38,7 +38,16 @@ export default function PhotoGallery() {
             {/* Card Shell */}
             <div 
               onClick={() => setSelectedPhoto(photo)}
-              className="glass-card glass-card-hover p-4 sm:p-5 rounded-3xl cursor-pointer border border-skyBlue/20 relative overflow-hidden transition-all duration-300 h-full flex flex-col justify-between"
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setSelectedPhoto(photo);
+                }
+              }}
+              tabIndex={0}
+              role="button"
+              aria-label={`View full photo: ${photo.title}`}
+              className="glass-card glass-card-hover p-4 sm:p-5 rounded-3xl cursor-pointer border border-skyBlue/20 relative overflow-hidden transition-all duration-300 h-full flex flex-col justify-between focus:outline-none focus:ring-2 focus:ring-skyBlue/60"
             >
               {/* Image Frame */}
               <div className="relative overflow-hidden rounded-2xl mb-4 flex-grow">
