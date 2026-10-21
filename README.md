@@ -1,7 +1,7 @@
 # A Little Universe Called Sowmi 💙
 ### An Interactive Birthday Surprise Website
 
-A cinematic, emotional, and interactive birthday website built for **Sowmiya** (Sowmi). Designed with a dreamy sky-blue to midnight-blue celestial theme, smooth Framer Motion transitions, interactive birthday cake & candles, vertical chaptered story timeline, photo gallery with lightbox, and a heartfelt birthday letter.
+A cinematic, emotional, and interactive birthday website built for **Sowmiya** (Sowmi). Designed with a dreamy sky-blue to midnight-blue celestial theme, smooth Framer Motion transitions, interactive birthday cake & candles, vertical chaptered story timeline, photo gallery with lightbox, separate memory reveal sections, and a heartfelt birthday letter.
 
 ---
 
@@ -10,7 +10,10 @@ A cinematic, emotional, and interactive birthday website built for **Sowmiya** (
 1. **Stage 1: The Opening**
    - Full-screen dreamy blue sky with stars, moonlight, and floating particles.
    - Animated typography: *"Hey, Sowmi 💙"*
-   - Gentle reveal trigger: *"Open Your Surprise ✨"*
+   - Cinematic spaced subtitle: *"Some people enter our lives quietly... and somehow become a beautiful part of our story."*
+   - Subtle universe line: *"A little blue universe, made just for your day. ✨"*
+   - Gentle reveal trigger: *"Open Your Surprise ✨"* with polished ambient glow and hover transitions.
+   - Uncluttered screen: bottom navigation is neatly hidden until the surprise is opened.
 
 2. **Stage 2: The Birthday Celebration**
    - Interactive SVG birthday cake with flickering candles.
@@ -22,10 +25,13 @@ A cinematic, emotional, and interactive birthday website built for **Sowmiya** (
    - Scroll-triggered vertical timeline detailing the journey from school days to long late-night calls.
    - Chapters 1 through 5 with meaningful timestamps, badges, and glowing timeline trails.
 
-4. **Stage 4: Our Memories**
-   - **Section A (Her Moments):** Responsive photo cards showcasing Sowmi's photos with tap-to-expand lightbox.
-   - **Section B (An Unexpected Memory):** Framed reveal for the wedding photograph with a glowing unlock interaction.
-   - **Graceful Fallbacks:** If photos have not been placed yet, celestial placeholder cards show exact filenames without broken image icons.
+4. **Stage 4: Our Memories (Visually Distinct Sections)**
+   - **Section A (Her Moments):** Responsive photo cards showcasing Sowmi's solo photos with tap-to-expand lightbox.
+   - **Section B (An Unexpected Memory):** Framed reveal for the wedding photograph (`our-memory.jpg`) with a glowing unlock interaction and caption:
+     > *"We never planned to take a picture together that day. Somehow, we still ended up with a memory worth keeping. 💙"*
+   - **Section C (A Moment Just for Us):** Dedicated framed reveal for the spontaneous selfie (`our-selfie.jpg`) with a *"Reveal This Memory"* button, Framer Motion reveal, and caption:
+     > *"One photograph, two smiles, and a memory I'm glad we have. 🩵"*
+   - **Graceful Fallbacks:** If photos are ever missing or renamed, celestial placeholder cards show exact filenames without broken image icons.
 
 5. **Stage 5: A Letter for Sowmi**
    - Deep midnight blue celestial card with an interactive sealed envelope.
@@ -38,35 +44,21 @@ A cinematic, emotional, and interactive birthday website built for **Sowmiya** (
 
 ---
 
-## 📸 How to Add Photographs
+## 📸 How to Place Photographs
 
-All photographs should be saved directly in the `public/images/` folder.
+All photographs should be saved directly in the `public/images/` folder:
 
-| Image Type | File Path | Description |
+| Photo Section | File Path | Description |
 |---|---|---|
-| **Sowmi Solo 1** | `public/images/sowmi-01.jpg` | First solo photograph of Sowmi |
-| **Sowmi Solo 2** | `public/images/sowmi-02.jpg` | Second solo photograph of Sowmi |
-| **Sowmi Solo 3** | `public/images/sowmi-03.jpg` | Third solo photograph of Sowmi |
-| **Together** | `public/images/our-memory.jpg` | Photo of Sowmi and you at the wedding |
+| **Stage 4 - Section A** | `public/images/sowmi-01.jpg` | First solo photograph of Sowmi (A Tender Smile) |
+| **Stage 4 - Section A** | `public/images/sowmi-02.jpg` | Second solo photograph of Sowmi (Grace in Blue Saree) |
+| **Stage 4 - Section A** | `public/images/sowmi-03.jpg` | Third solo photograph of Sowmi (Playful & Candid) |
+| **Stage 4 - Section B** | `public/images/our-memory.jpg` | Wedding photograph of Sowmi and you seated at the table |
+| **Stage 4 - Section C** | `public/images/our-selfie.jpg` | Spontaneous selfie of Sowmi and you smiling together |
 
 ### Editing Gallery Data (Adding / Modifying Photos)
-The gallery is 100% data-driven. To add more photographs, edit titles, or change captions, open:
+The gallery is 100% data-driven. To edit titles, captions, or add more photographs, open:
 `src/data/galleryData.js`
-
-```javascript
-export const soloMemories = [
-  {
-    id: 1,
-    title: "Her Radiance",
-    subtitle: "A smile that lights up any room",
-    src: "/images/sowmi-01.jpg",
-    alt: "Sowmiya's photograph 1",
-    tag: "Radiance",
-    note: "Some smiles carry a warmth that stays with you long after the conversation ends."
-  },
-  // Add more entries here...
-];
-```
 
 ---
 

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Image, ArrowRight } from 'lucide-react';
 import PhotoGallery from './PhotoGallery';
 import MemoryReveal from './MemoryReveal';
+import SelfieMemoryReveal from './SelfieMemoryReveal';
 
 export default function MemoriesSection({ onContinue }) {
   return (
@@ -35,11 +36,14 @@ export default function MemoriesSection({ onContinue }) {
         </motion.div>
       </div>
 
-      {/* SECTION A: Her Moments */}
+      {/* SECTION A: Her Moments (Solo Photos) */}
       <PhotoGallery />
 
-      {/* SECTION B: An Unexpected Memory */}
+      {/* SECTION B: An Unexpected Memory (Wedding Photo) */}
       <MemoryReveal />
+
+      {/* SECTION C: A Moment Just for Us (Selfie Photo) */}
+      <SelfieMemoryReveal />
 
       {/* Continue to Letter Button */}
       <motion.div
@@ -47,11 +51,11 @@ export default function MemoriesSection({ onContinue }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="mt-16 text-center"
+        className="mt-20 text-center"
       >
         <button
           onClick={onContinue}
-          className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm sm:text-base font-medium text-softWhite bg-primaryBlue/30 hover:bg-primaryBlue/50 border border-skyBlue/40 transition-all duration-300 hover:scale-105 active:scale-95 shadow-glow-sm"
+          className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full text-sm sm:text-base font-medium text-softWhite bg-primaryBlue/30 hover:bg-primaryBlue/50 border border-skyBlue/40 transition-all duration-300 hover:scale-105 active:scale-95 shadow-glow-sm cursor-pointer"
         >
           A Letter For Sowmi
           <ArrowRight className="w-4 h-4 text-iceBlue" />

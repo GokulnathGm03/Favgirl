@@ -55,11 +55,13 @@ export const weddingMemory = {
 
 export const selfieMemory = {
   id: "selfie-memory",
-  title: "Our Candid Selfie",
-  subtitle: "A spontaneous moment together",
+  title: "A Moment Just for Us",
+  subtitle: "One spontaneous selfie, captured together",
   src: "/images/our-selfie.jpg",
   fallbackSrc: "/images/our-selfie.jpg.jpeg",
-  alt: "A smiling selfie of Sowmi and me together",
-  tag: "Special Moment",
-  caption: "Some of the best smiles happen when you're simply sharing a moment with someone you value. 💙"
+  alt: "A selfie of Sowmi and me together",
+  tag: "A Moment Just for Us",
+  preRevealText: "Some smiles don't need an occasion...",
+  buttonText: "Reveal This Memory",
+  caption: "One photograph, two smiles, and a memory I'm glad we have. 🩵"
 };
