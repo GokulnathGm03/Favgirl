@@ -32,6 +32,7 @@ export default function App() {
 
   const handleReplay = () => {
     setCurrentStage(1);
+    setMaxUnlockedStage(1);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
