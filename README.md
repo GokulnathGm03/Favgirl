@@ -1,2 +1,2 @@
 # Favgirl
-Created webpage for Bday girl
+Created a webpage for Bday girl
