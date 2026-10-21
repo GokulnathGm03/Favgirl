@@ -147,37 +147,39 @@ export default function FinalSecret({ onReplay }) {
               <Sparkles className="w-4 h-4 text-iceBlue animate-pulse" />
             </button>
 
-            {/* Optional Share Controls */}
-            <div className="flex flex-wrap items-center justify-center gap-3 mt-1">
-              {/* WhatsApp Share */}
-              <button
-                onClick={handleShareWhatsApp}
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium text-skyBlue/90 hover:text-softWhite glass-card hover:bg-deepNavy/80 border border-skyBlue/20 transition-all duration-300 hover:scale-105 cursor-pointer"
-                title="Share via WhatsApp"
-              >
-                <Send className="w-3.5 h-3.5 text-skyBlue" />
-                <span>Send to Sowmi</span>
-              </button>
+            {/* Optional Share Controls (Disabled for now) */}
+            {false && (
+              <div className="flex flex-wrap items-center justify-center gap-3 mt-1">
+                {/* WhatsApp Share */}
+                <button
+                  onClick={handleShareWhatsApp}
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-medium text-skyBlue/90 hover:text-softWhite glass-card hover:bg-deepNavy/80 border border-skyBlue/20 transition-all duration-300 hover:scale-105 cursor-pointer"
+                  title="Share via WhatsApp"
+                >
+                  <Send className="w-3.5 h-3.5 text-skyBlue" />
+                  <span>Send to Sowmi</span>
+                </button>
 
-              {/* Copy Link */}
-              <button
-                onClick={handleCopyShare}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-medium text-skyBlue/80 hover:text-softWhite glass-card hover:bg-deepNavy/80 border border-skyBlue/20 transition-all duration-300 cursor-pointer"
-                title="Copy link to clipboard"
-              >
-                {copiedShare ? (
-                  <>
-                    <Check className="w-3.5 h-3.5 text-green-400" />
-                    <span className="text-green-300">Link Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Share2 className="w-3.5 h-3.5" />
-                    <span>Copy Link</span>
-                  </>
-                )}
-              </button>
-            </div>
+                {/* Copy Link */}
+                <button
+                  onClick={handleCopyShare}
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-medium text-skyBlue/80 hover:text-softWhite glass-card hover:bg-deepNavy/80 border border-skyBlue/20 transition-all duration-300 cursor-pointer"
+                  title="Copy link to clipboard"
+                >
+                  {copiedShare ? (
+                    <>
+                      <Check className="w-3.5 h-3.5 text-green-400" />
+                      <span className="text-green-300">Link Copied!</span>
+                    </>
+                  ) : (
+                    <>
+                      <Share2 className="w-3.5 h-3.5" />
+                      <span>Copy Link</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            )}
           </motion.div>
         </motion.section>
       ) : (
