@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#93C5FD" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#60A5FA" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#071426" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="moonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BAE6FD"/>
+      <stop offset="100%" stop-color="#60A5FA"/>
+    </linearGradient>
+    <linearGradient id="starGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#93C5FD"/>
+    </linearGradient>
+  </defs>
+  <!-- Background Glow -->
+  <circle cx="32" cy="32" r="30" fill="url(#glow)"/>
+  
+  <!-- Crescent Moon -->
+  <path d="M38 12C26.9543 12 18 20.9543 18 32C18 43.0457 26.9543 52 38 52C42.062 52 45.8335 50.7909 49 48.7188C40.5 47 34 39.5 34 32C34 24.5 40.5 17 49 15.2812C45.8335 13.2091 42.062 12 38 12Z" fill="url(#moonGrad)"/>
+  
+  <!-- Twinkling Blue Star -->
+  <path d="M46 22L47.5 28L53.5 29.5L47.5 31L46 37L44.5 31L38.5 29.5L44.5 28L46 22Z" fill="url(#starGrad)"/>
+  <circle cx="24" cy="20" r="1.5" fill="#BAE6FD" opacity="0.8"/>
+  <circle cx="22" cy="42" r="1.2" fill="#BAE6FD" opacity="0.7"/>
+</svg>
