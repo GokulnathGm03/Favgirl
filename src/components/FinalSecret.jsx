@@ -124,7 +124,7 @@ export default function FinalSecret({ onReplay }) {
             className="mb-8"
           >
             <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-glow text-softWhite mb-3">
-              Happy Birthday, Sowmiya! <span className="text-primaryBlue">💙</span>
+              Happy Birthday, CA Sowmiya! <span className="text-primaryBlue">💙</span>
             </h2>
             <p className="text-xs sm:text-sm text-skyBlue/70 font-light">
               May your year ahead be as bright and peaceful as the stars.

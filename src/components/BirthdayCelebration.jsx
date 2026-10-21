@@ -183,7 +183,7 @@ export default function BirthdayCelebration({ onContinue }) {
 
         {/* Large Elegant Serif Heading */}
         <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-glow text-softWhite mb-1.5 break-words">
-          Happy Birthday,CA Sowmi ! <span className="inline-block text-primaryBlue drop-shadow-[0_0_12px_#60A5FA]">💙</span>
+          Happy Birthday, Sowmi ! <span className="inline-block text-primaryBlue drop-shadow-[0_0_12px_#60A5FA]">💙</span>
         </h2>
 
         {/* Subtitle */}
