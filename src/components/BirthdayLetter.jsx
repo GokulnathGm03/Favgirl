@@ -21,7 +21,7 @@ export default function BirthdayLetter({ onContinue }) {
           Words from the Heart
         </span>
         <h2 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-glow text-softWhite mb-2">
-          A Letter For Sowmi
+          A Letter To My Sowmi 💙
         </h2>
         <p className="text-skyBlue/80 text-xs sm:text-sm font-light">
           Written with honest thoughts and genuine gratitude.
@@ -106,7 +106,7 @@ export default function BirthdayLetter({ onContinue }) {
                   </span>
                 </div>
                 <span className="text-xs font-mono text-skyBlue/60">
-                  To: Sowmi
+                  To: Fav Girl
                 </span>
               </div>
 

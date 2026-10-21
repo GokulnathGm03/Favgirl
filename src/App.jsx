@@ -9,6 +9,7 @@ import StoryTimeline from './components/StoryTimeline';
 import MemoriesSection from './components/MemoriesSection';
 import BirthdayLetter from './components/BirthdayLetter';
 import FinalSecret from './components/FinalSecret';
+import { audioManager } from './utils/audioManager';
 
 export default function App() {
   const [currentStage, setCurrentStage] = useState(1);
@@ -24,6 +25,8 @@ export default function App() {
   };
 
   const handleOpenSurprise = () => {
+    // Start background music with smooth fade-in when Sowmi opens the surprise
+    audioManager.play();
     navigateToStage(2);
   };
 

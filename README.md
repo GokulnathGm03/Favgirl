@@ -13,7 +13,7 @@ A cinematic, emotional, and interactive birthday website built for **Sowmiya** (
    - Cinematic spaced subtitle: *"Some people enter our lives quietly... and somehow become a beautiful part of our story."*
    - Subtle universe line: *"A little blue universe, made just for your day. ✨"*
    - Gentle reveal trigger: *"Open Your Surprise ✨"* with polished ambient glow and hover transitions.
-   - Uncluttered screen: bottom navigation is neatly hidden until the surprise is opened.
+   - Uncluttered screen: left navigation sidebar remains hidden until the surprise is opened.
 
 2. **Stage 2: The Birthday Celebration**
    - Interactive SVG birthday cake with flickering candles.
@@ -32,6 +32,7 @@ A cinematic, emotional, and interactive birthday website built for **Sowmiya** (
    - **Section C (A Moment Just for Us):** Dedicated framed reveal for the spontaneous selfie (`our-selfie.jpg`) with a *"Reveal This Memory"* button, Framer Motion reveal, and caption:
      > *"One photograph, two smiles, and a memory I'm glad we have. 🩵"*
    - **Graceful Fallbacks:** If photos are ever missing or renamed, celestial placeholder cards show exact filenames without broken image icons.
+   - **Full-Viewport Lightbox Scrolling:** Expanded photos support complete vertical scrolling so tall pictures and captions are always fully readable without background bleed.
 
 5. **Stage 5: A Letter for Sowmi**
    - Deep midnight blue celestial card with an interactive sealed envelope.
@@ -41,6 +42,19 @@ A cinematic, emotional, and interactive birthday website built for **Sowmiya** (
    - Midnight-blue starry sky with sequential emotional thoughts.
    - A subtle hint of affection: *"Some people become our favourites without even trying. You just happen to be one of mine. 🌙"*
    - *"Replay This Little Universe ↺"* to reset the experience.
+
+---
+
+## 🎵 Background Music Integration
+
+The website includes a dedicated background audio player:
+* **Audio File Path:** `public/audio/oh-shanthi-bgm.mp3`
+* **Playback Logic:**
+  - **Zero Autoplay:** Audio never autoplays on initial page load.
+  - **Start Trigger:** Playback begins with a gentle 1.5s fade-in when Sowmi clicks **"Open Your Surprise ✨"**, or when she taps the **"Music: Off"** button in the top right.
+  - **Continuous Playback:** Music plays continuously as she navigates between sections (it does *not* restart on section changes).
+  - **Gentle Fade-Out:** When paused or muted via the Music control, the audio smoothly fades out over 0.65s before stopping.
+  - **Reliable Fallback:** If the MP3 file is unavailable or restricted by browser codecs, the player falls back to an ambient celestial chime synthesizer seamlessly.
 
 ---
 
@@ -55,10 +69,6 @@ All photographs should be saved directly in the `public/images/` folder:
 | **Stage 4 - Section A** | `public/images/sowmi-03.jpg` | Third solo photograph of Sowmi (Playful & Candid) |
 | **Stage 4 - Section B** | `public/images/our-memory.jpg` | Wedding photograph of Sowmi and you seated at the table |
 | **Stage 4 - Section C** | `public/images/our-selfie.jpg` | Spontaneous selfie of Sowmi and you smiling together |
-
-### Editing Gallery Data (Adding / Modifying Photos)
-The gallery is 100% data-driven. To edit titles, captions, or add more photographs, open:
-`src/data/galleryData.js`
 
 ---
 
@@ -117,4 +127,4 @@ vercel
 - **Animations:** Framer Motion
 - **Icons:** Lucide React
 - **Confetti:** Canvas Confetti
-- **Audio:** Web Audio API ambient chime synthesizer (Starts muted, strictly NO autoplay)
+- **Audio:** HTML5 Audio with smooth fade-in/out and celestial Web Audio fallback (Zero autoplay)
